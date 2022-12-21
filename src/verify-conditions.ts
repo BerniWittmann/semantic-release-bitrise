@@ -4,7 +4,7 @@ import { TOKEN_ENV_NAME } from './common/constants';
 import * as SemanticReleaseError from '@semantic-release/error';
 
 export function verifyConditions(config: Config, {logger, env}: semantic.Context) {
-	const accessToken: string | undefined = process.env[TOKEN_ENV_NAME];
+	const accessToken: string | undefined = env[TOKEN_ENV_NAME];
 
 	if (!accessToken) {
 		logger.log(`${TOKEN_ENV_NAME} has not been defined.`);
