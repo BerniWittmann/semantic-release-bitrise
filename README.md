@@ -18,8 +18,7 @@ $ npm install --save-dev semantic-release-bitrise
 
 ## Usage
 
-The plugin can be configured in the [
-semantic-release configuration file](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration):
+The plugin can be configured in the [semantic-release configuration file](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration):
 
 ```json
 {
@@ -29,12 +28,7 @@ semantic-release configuration file](https://github.com/semantic-release/semanti
         [
             "semantic-release-bitrise",
             {
-                "notifications": [
-                    {
-                        "chatIds": "123456",
-                        "branch": "release/*.x.x"
-                    }
-                ]
+                "appSlug": "1234abcd"
             }
         ]
     ]
