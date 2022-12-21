@@ -8,7 +8,8 @@
 		"lint": "eslint",
 		"build": "tsc",
 		"semantic-release": "semantic-release",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"type-check": "tsc --noEmit"
 	},
 	"repository": {
 		"type": "git",
