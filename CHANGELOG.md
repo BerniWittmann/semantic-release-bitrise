@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.0.1...v1.0.2) (2022-12-21)
+
+
+### Bug Fixes
+
+* :package: trigger new deploy to fix package ([a65f8be](https://github.com/BerniWittmann/semantic-release-bitrise/commit/a65f8be119efe2adf7a2ecc43733ffec5ba2067f))
+
 ## [1.0.1](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.0.0...v1.0.1) (2022-12-21)
 
 
