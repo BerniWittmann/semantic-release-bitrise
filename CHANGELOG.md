@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.0.0...v1.0.1) (2022-12-21)
+
+
+### Bug Fixes
+
+* :construction_worker: build package before uploading to npm ([da1d84a](https://github.com/BerniWittmann/semantic-release-bitrise/commit/da1d84a35e784e7ce90febd0013a6238653f9b30))
+
 # 1.0.0 (2022-12-21)
 
 
