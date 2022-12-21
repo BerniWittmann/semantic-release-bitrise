@@ -117,3 +117,5 @@ jobs:
 
       - name: Semantic Release Production
         uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
