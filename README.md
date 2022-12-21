@@ -47,6 +47,7 @@ The `BITRISE_ACCESS_TOKEN` variable needs to be defined in the environment where
 | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------------------------------------------- |
 | `appSlug`     | The AppSlug from bitrise                                                                                                                                  | yes       | - |
 | `workflowId` | Sets the id of the workflow to run on bitrise. If none given the default trigger map will be used | no       | -                                         |
+| `workflowIdMap` | Sets the id of the workflow to run on bitrise based on a branch. If none given the default trigger map will be used | no       | -                                         |
 
 ## Examples
 
@@ -62,6 +63,27 @@ The `BITRISE_ACCESS_TOKEN` variable needs to be defined in the environment where
             {
                 "appSlug": "1234abcd",
                 "workflowId": "ios-production"
+            }
+        ]
+    ]
+}
+```
+
+### Setting a specific workflow for a specific branch name
+
+```json
+{
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "semantic-release-bitrise",
+            {
+                "appSlug": "1234abcd",
+                "workflowIdMap": {
+                    "main": "ios-production",
+                    "develop": "ios-stage"
+                }
             }
         ]
     ]
