@@ -1,0 +1,76 @@
+{
+	"name": "semantic-release-bitrise",
+	"version": "1.0.0",
+	"description": "A semantic release plugin to trigger builds on bitrise",
+	"main": "lib/index.js",
+	"scripts": {
+		"test": "nyc -e .ts -x \"*.spec.ts\" jasmine-ts \"**/*.spec.ts\"",
+		"lint": "eslint",
+		"build": "tsc",
+		"semantic-release": "semantic-release",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/BerniWittmann/semantic-release-bitrise.git"
+	},
+	"files": [
+		"README.md",
+		"LICENSE",
+		"lib"
+	],
+	"keywords": [
+		"semantic-release",
+		"semantic-release-bitrise",
+		"bot",
+		"release",
+		"ci",
+		"bitrise",
+		"semantic-release-bot"
+	],
+	"author": "Bernhard Wittmann <dev@bernhardwittmann.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/BerniWittmann/semantic-release-bitrise/issues"
+	},
+	"homepage": "https://github.com/BerniWittmann/semantic-release-bitrise#readme",
+	"peerDependencies": {
+		"semantic-release": ">=11.0.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^12.1.1",
+		"@commitlint/config-conventional": "^12.1.1",
+		"@types/jasmine": "^3.9.1",
+		"@types/node": "^16.10.4",
+		"@types/semantic-release": "^17.2.2",
+		"eslint": "^7.24.0",
+		"husky": "^6.0.0",
+		"jasmine": "^3.7.0",
+		"jasmine-spec-reporter": "^7.0.0",
+		"jasmine-ts": "^0.4.0",
+		"lint-staged": "^10.5.4",
+		"nyc": "^15.1.0",
+		"prettier": "2.2.1",
+		"semantic-release": "^17.4.2",
+		"ts-node": "^10.3.0",
+		"typescript": "^4.4.4"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"lint-staged": {
+		"*.{js,json,md}": [
+			"prettier --write",
+			"git add"
+		],
+		"*.{css,scss,less}": "stylelint --fix",
+		"*.js": "eslint --fix"
+	},
+	"dependencies": {
+		"@semantic-release/error": "^2.2.0",
+		"axios": "^1.2.1"
+	}
+}
