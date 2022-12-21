@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.0.2...v1.1.0) (2022-12-21)
+
+
+### Features
+
+* :sparkles: configure workflow based on branch name ([4f4901f](https://github.com/BerniWittmann/semantic-release-bitrise/commit/4f4901f6a887913a60fbd35367a053fceeb07101))
+
 ## [1.0.2](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.0.1...v1.0.2) (2022-12-21)
 
 
