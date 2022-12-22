@@ -24,15 +24,16 @@ const getWorkflowId = (config: Config, context: semantic.Context): string | unde
 }
 
 export async function success(config: Config, context: semantic.Context) {
-	const {
-		nextRelease,
-	} = context;
+	const nextRelease = context.nextRelease;
+	// @ts-expect-error
+	const branch = context.branch;
 
 	if (nextRelease) {
 		await triggerBuild({
 			appSlug: config.appSlug,
 			tag: nextRelease?.gitTag,
 			commitMessage: `Release v${nextRelease.version}`,
+			branch: branch.name,
 			workflowId: getWorkflowId(config, context)
 		}, context)
 	}
