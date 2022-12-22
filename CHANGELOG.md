@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.1.0...v1.1.1) (2022-12-22)
+
+
+### Bug Fixes
+
+* :bug: set branch name as well for correct git head initialization on bitrise ([5f0f7d8](https://github.com/BerniWittmann/semantic-release-bitrise/commit/5f0f7d81ee1e7ee2a35bbcf581cecf13d67cf505))
+
 # [1.1.0](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.0.2...v1.1.0) (2022-12-21)
 
 
