@@ -3,9 +3,9 @@ import { triggerBuild } from './common/trigger-build';
 import { Config } from './interfaces/config';
 import * as SemanticReleaseError from '@semantic-release/error';
 
-const getWorkflowId = (config: Config, context: semantic.Context): string | undefined => {
+const getWorkflowIds = (config: Config, context: semantic.Context): string | string[] | undefined => {
 	if (config.workflowId) {
-		return config.workflowId;
+		return [config.workflowId];
 	}
 	if (config.workflowIdMap) {
 		// @ts-expect-error
@@ -29,12 +29,26 @@ export async function success(config: Config, context: semantic.Context) {
 	const branch = context.branch;
 
 	if (nextRelease) {
-		await triggerBuild({
-			appSlug: config.appSlug,
-			tag: nextRelease?.gitTag,
-			commitMessage: `Release v${nextRelease.version}`,
-			branch: branch.name,
-			workflowId: getWorkflowId(config, context)
-		}, context)
+		const workflowIds = getWorkflowIds(config, context);
+		if (!Array.isArray(workflowIds)) {
+			await triggerBuild({
+				appSlug: config.appSlug,
+				tag: nextRelease?.gitTag,
+				commitMessage: `Release v${nextRelease.version}`,
+				branch: branch.name,
+				workflowId: workflowIds
+			}, context)
+		} else {
+			await (workflowIds?? [undefined]).forEach(async (workflowId) => {
+				await triggerBuild({
+					appSlug: config.appSlug,
+					tag: nextRelease?.gitTag,
+					commitMessage: `Release v${nextRelease.version}`,
+					branch: branch.name,
+					workflowId
+				}, context)
+			});
+		}
+		
 	}
 }

@@ -47,7 +47,7 @@ The `BITRISE_ACCESS_TOKEN` variable needs to be defined in the environment where
 | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------------------------------------------- |
 | `appSlug`     | The AppSlug from bitrise                                                                                                                                  | yes       | - |
 | `workflowId` | Sets the id of the workflow to run on bitrise. If none given the default trigger map will be used | no       | -                                         |
-| `workflowIdMap` | Sets the id of the workflow to run on bitrise based on a branch. If none given the default trigger map will be used | no       | -                                         |
+| `workflowIdMap` | Sets the id of the workflows to run on bitrise based on a branch. If none given the default trigger map will be used | no       | -                                         |
 
 ## Examples
 
