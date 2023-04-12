@@ -12,13 +12,32 @@ const getWorkflowId = (config: Config, context: semantic.Context): string | unde
 		const branch = context.branch;
 		if (Object.keys(config.workflowIdMap).includes(branch.name)) {
 			return config.workflowIdMap[branch.name];
-		} else {
+		} 
+		
+		let branchRegExp;
+		try {
+			branchRegExp = new RegExp(branch.name);
+		} catch(error) {
 			throw new SemanticReleaseError(
 				'Unable to find workflow id based on workflowIdMap ',
 				'ENOBRANCHMATCH',
-				`The workflowIdMap option does not include a configuration for branch '${branch.name}'`,
+				`The provided branch is not a valid regex pattern '${branch.name}'`,
 			);
 		}
+
+		const regexMatchingBranchName = Object.keys(config.workflowIdMap).find((branchName) => {
+			return branchRegExp.test(branchName) && config?.workflowIdMap != null
+    })
+    if (regexMatchingBranchName != null) {
+      return config.workflowIdMap[regexMatchingBranchName];
+    }
+     
+		
+		throw new SemanticReleaseError(
+			'Unable to find workflow id based on workflowIdMap ',
+			'ENOBRANCHMATCH',
+			`The workflowIdMap option does not include a configuration for branch '${branch.name}'`,
+		);
 	}
 	return undefined;
 }
