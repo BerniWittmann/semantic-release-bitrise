@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.1.1...v1.2.0) (2023-04-14)
+
+
+### Features
+
+* allow regex strings to match branch names ([773e513](https://github.com/BerniWittmann/semantic-release-bitrise/commit/773e513584510694b5131518879b029625b358ea))
+
 ## [1.1.1](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.1.0...v1.1.1) (2022-12-22)
 
 
