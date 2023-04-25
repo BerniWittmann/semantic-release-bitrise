@@ -1,6 +1,6 @@
 {
 	"name": "semantic-release-bitrise",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "A semantic release plugin to trigger builds on bitrise",
 	"main": "lib/index.js",
 	"scripts": {

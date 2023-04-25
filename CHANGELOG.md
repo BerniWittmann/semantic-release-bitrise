@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.2.0...v1.2.1) (2023-04-25)
+
+
+### Bug Fixes
+
+* :bug: correct how workflowIdMap handles regexes for workflow mapping ([b39d42a](https://github.com/BerniWittmann/semantic-release-bitrise/commit/b39d42a022d18c0c95bc6d44014a400d9c7833ac))
+
 # [1.2.0](https://github.com/BerniWittmann/semantic-release-bitrise/compare/v1.1.1...v1.2.0) (2023-04-14)
 
 
