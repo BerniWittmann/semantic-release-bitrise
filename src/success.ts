@@ -8,31 +8,31 @@ const getWorkflowId = (config: Config, context: semantic.Context): string | unde
 		return config.workflowId;
 	}
 	if (config.workflowIdMap) {
+		// check if there is a direct/literal match
 		// @ts-expect-error
 		const branch = context.branch;
 		if (Object.keys(config.workflowIdMap).includes(branch.name)) {
 			return config.workflowIdMap[branch.name];
 		} 
-		
-		let branchRegExp;
-		try {
-			branchRegExp = new RegExp(branch.name);
-		} catch(error) {
-			throw new SemanticReleaseError(
-				'Unable to find workflow id based on workflowIdMap ',
-				'ENOBRANCHMATCH',
-				`The provided branch is not a valid regex pattern '${branch.name}'`,
-			);
-		}
 
-		const regexMatchingBranchName = Object.keys(config.workflowIdMap).find((branchName) => {
-			return branchRegExp.test(branchName) && config?.workflowIdMap != null
-    })
-    if (regexMatchingBranchName != null) {
-      return config.workflowIdMap[regexMatchingBranchName];
-    }
+		// now we check if the workflowIdMap includes regexes and try to match those
+		const regexMatchingBranchName = Object.keys(config.workflowIdMap).find((workflowIdMatcher) => {
+			let branchRegExp: RegExp;
+			try {
+				branchRegExp = new RegExp(workflowIdMatcher);
+			} catch (error) {
+				throw new SemanticReleaseError(
+					'Unable to find workflow id based on workflowIdMap ',
+					'ENOBRANCHMATCH',
+					`The provided branch is not a valid regex pattern '${workflowIdMatcher}'`,
+				);
+			}
+			return branchRegExp.test(branch.name);
+    	})
+		if (regexMatchingBranchName != null) {
+			return config.workflowIdMap[regexMatchingBranchName];
+		}
      
-		
 		throw new SemanticReleaseError(
 			'Unable to find workflow id based on workflowIdMap ',
 			'ENOBRANCHMATCH',
